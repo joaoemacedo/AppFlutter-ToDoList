@@ -36,7 +36,8 @@ class AddTaskScreen extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.black,
-                backgroundColor: Colors.amber, // Altera a cor de fundo do botão para amarelo
+                backgroundColor:
+                    Colors.amber, // Altera a cor de fundo do botão para amarelo
               ),
               child: const Text('Adicionar Tarefa'),
             ),

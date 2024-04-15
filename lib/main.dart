@@ -89,20 +89,21 @@ class _TaskListScreenState extends State<TaskListScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final result = await Navigator.push(
+        onPressed: () {
+          Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => AddTaskScreen()),
-          );
-          if (result != null && result.isNotEmpty) {
-            addTask(Task(result));
-          }
+          ).then((result) {
+            if (result != null && result.isNotEmpty) {
+              addTask(Task(result));
+            }
+          });
         },
         tooltip: 'Adicionar Tarefa',
-        backgroundColor: Colors.amber, // Altera a cor de fundo do botão para amarelo
+        backgroundColor:
+            Colors.amber, // Altera a cor de fundo do botão para amarelo
         child: const Icon(Icons.add),
       ),
     );
   }
 }
-
