@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/model/task.dart';
+import 'package:flutter_application_1/provider/task_provider.dart';
+import 'package:provider/provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
@@ -32,12 +35,13 @@ class AddTaskScreen extends StatelessWidget {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context, _controller.text);
+                Provider.of<TaskProvider>(context, listen: false)
+                    .addTask(Task(_controller.text));
+                Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.black,
-                backgroundColor:
-                    Colors.amber, // Altera a cor de fundo do botão para amarelo
+                backgroundColor: Colors.amber,
               ),
               child: const Text('Adicionar Tarefa'),
             ),
